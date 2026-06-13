@@ -1,0 +1,308 @@
+startup_intake_task:
+  description: >
+    Analyze the startup idea and convert it into a structured
+    startup profile.
+
+    Startup Idea:
+    {startup_idea}
+
+    Extract:
+
+    - idea
+    - target users
+    - business model
+    - market/country
+    - budget
+    - timeline
+    - team size
+    - problem statement
+    - technical requirements
+
+    Detect ambiguity.
+
+    Missing information must be identified.
+
+    Never assume missing facts.
+
+  expected_output: >
+    A structured startup profile in JSON format containing:
+    idea, target_users, business_model,
+    market, budget, timeline,
+    team_size, problem_statement,
+    technical_requirements, missing_fields.
+
+
+
+context_builder_task:
+  description: >
+    Conduct grounded external research for the startup.
+
+    Review the startup intake analysis from previous context.
+
+    Research:
+
+    1. Market demand
+    2. Industry growth
+    3. Competitors
+    4. Pricing models
+    5. Technology requirements
+    6. Industry trends
+    7. Startup ecosystem signals
+
+    Use tools to gather evidence.
+
+    Never speculate without evidence.
+
+  expected_output: >
+    A detailed research context report containing:
+    market size, competitors,
+    pricing models, industry trends,
+    technology requirements,
+    and evidence-backed findings.
+
+
+
+market_analysis_task:
+  description: >
+    Evaluate whether the startup solves a painful enough problem.
+
+    Use the startup intake analysis and research context.
+
+    Answer:
+
+    - Do users genuinely care?
+    - How painful is the problem?
+    - Do users already pay?
+    - Why now?
+    - TAM / SAM / SOM estimation
+    - Realistic market capture
+
+    Be skeptical.
+
+    Avoid founder optimism.
+
+    Provide a score out of 100.
+
+  expected_output: >
+    A detailed market analysis including:
+    market_score,
+    demand validation,
+    pain intensity,
+    willingness to pay,
+    timing analysis,
+    TAM/SAM/SOM,
+    strengths, weaknesses,
+    risks, assumptions,
+    and confidence score.
+
+
+
+technical_analysis_task:
+  description: >
+    Evaluate technical feasibility.
+
+    Use the startup intake analysis and research context.
+
+    Evaluate:
+
+    - Build difficulty
+    - Timeline realism
+    - Team capability
+    - Infrastructure cost
+    - Vendor dependency risk
+    - Technical debt
+    - AI dependency
+
+    Identify unrealistic assumptions.
+
+    Provide score out of 100.
+
+  expected_output: >
+    Detailed technical feasibility report including:
+    technical_score,
+    difficulty level,
+    timeline realism,
+    monthly infrastructure cost,
+    vendor risk,
+    strengths,
+    weaknesses,
+    risks,
+    assumptions,
+    and confidence score.
+
+
+
+financial_analysis_task:
+  description: >
+    Evaluate startup economics.
+
+    Use the startup intake analysis and research context.
+
+    Evaluate:
+
+    - Revenue model
+    - Subscription viability
+    - Burn rate
+    - Customer acquisition cost
+    - Lifetime value
+    - Pricing realism
+    - Monetization risk
+
+    Challenge assumptions aggressively.
+
+    Provide score out of 100.
+
+  expected_output: >
+    Detailed financial report including:
+    finance_score,
+    burn_rate,
+    monetization_strength,
+    CAC risk,
+    LTV confidence,
+    strengths,
+    weaknesses,
+    risks,
+    assumptions,
+    and confidence score.
+
+
+
+competition_analysis_task:
+  description: >
+    Evaluate competitive landscape.
+
+    Use the startup intake analysis and research context.
+
+    Determine:
+
+    - Direct competitors
+    - Indirect competitors
+    - Pricing comparison
+    - Switching cost
+    - Market saturation
+    - Moat strength
+    - Defensibility
+
+    Be brutally honest.
+
+    Provide score out of 100.
+
+  expected_output: >
+    Detailed competition report including:
+    competition_score,
+    saturation level,
+    moat strength,
+    switching cost,
+    defensibility,
+    strengths,
+    weaknesses,
+    risks,
+    assumptions,
+    and confidence score.
+
+
+
+devils_advocate_task:
+  description: >
+    Destroy the startup idea.
+
+    Review all specialist analyses from previous context.
+
+    Your responsibility:
+
+    - Attack assumptions
+    - Simulate failure
+    - Identify blind spots
+    - Predict why this startup dies
+    - Explain what competitors exploit
+    - Explain why customers may not care
+    - Identify existential risks
+
+    Be intentionally skeptical.
+
+    Do not be optimistic.
+
+    Provide a failure probability score out of 100.
+
+  expected_output: >
+    Detailed skeptical report including:
+    failure probability,
+    fatal risks,
+    blind spots,
+    hidden assumptions,
+    reasons startup fails,
+    and confidence score.
+
+
+
+debate_task:
+  description: >
+    Moderate structured disagreement.
+
+    Review all specialist outputs from previous context.
+
+    Required:
+
+    Each specialist MUST answer:
+
+    1. What another specialist underestimated
+    2. Weakest assumption
+    3. Biggest ignored risk
+    4. Confidence level
+
+    Surface contradictions.
+
+    Resolve weak arguments.
+
+    No fake consensus allowed.
+
+  expected_output: >
+    A contradiction-focused debate report including:
+    agreements,
+    disagreements,
+    unresolved risks,
+    strongest arguments,
+    weakest assumptions,
+    and confidence assessment.
+
+
+
+decision_judge_task:
+  description: >
+    Make final startup decision.
+
+    Review all previous analysis and debate.
+
+    Score Framework:
+
+    Market = 30%
+    Technical = 20%
+    Financial = 20%
+    Competition = 15%
+    Risk = 15%
+
+    Verdict:
+
+    80–100 → PROCEED
+    60–79 → PIVOT
+    0–59 → AVOID
+
+    Your final answer MUST include:
+
+    - Startup Viability Score
+    - Verdict
+    - Executive Summary
+    - Strengths
+    - Weaknesses
+    - Major Risks
+    - Recommended Pivot (if needed)
+    - Confidence %
+
+    Return markdown format.
+
+  expected_output: >
+    A markdown startup evaluation report
+    with viability score, verdict,
+    strengths, weaknesses,
+    risks, recommendation,
+    and confidence score.
