@@ -37,6 +37,7 @@ VentureMind AI asks:
 
 The result is a **reasoning-first startup intelligence system**, not just another chatbot.
 
+Video link: https://youtube.com/shorts/AY6MoJKC9bU?feature=share
 ---
 
 # ❌ Problem Statement
