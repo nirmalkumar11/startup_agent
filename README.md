@@ -151,7 +151,7 @@ Input Understanding Agent
       ↓
 Context Builder Layer
       ↓
-┌────────────┬────────────┬────────────┬────────────┬────────────┐
+┌────────────┬────────────┬────────────┬────────────┬
 ↓            ↓            ↓            ↓            ↓
 Market    Technical   Financial   Competition   Devil's
 Agent     Agent       Agent       Agent         Advocate
